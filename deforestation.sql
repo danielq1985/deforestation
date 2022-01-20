@@ -1,17 +1,19 @@
 --Create main view
 CREATE VIEW forestation
 AS
-SELECT f.country_code AS f_country_code, f.country_name AS f_country_name, 
-f.year AS f_year, f.forest_area_sqkm,
-		l.country_code AS l_country_code, 
-l.country_code AS l_country_name, 
-l.year as l_year, 
-l.total_area_sq_mi * 2.59 AS total_area_sqkm,
-	             r.country_name AS r_country_name, 
-r.country_code AS r_country_code, 
-r.region, r.income_group,
-
-	(f.forest_area_sqkm) / (l.total_area_sq_mi * 2.59) * 100 AS percent_forest_area
+SELECT f.country_code AS f_country_code, 
+       f.country_name AS f_country_name, 
+       f.year AS f_year, 
+       f.forest_area_sqkm,
+       l.country_code AS l_country_code, 
+       l.country_code AS l_country_name, 
+       l.year as l_year, 
+       l.total_area_sq_mi * 2.59 AS total_area_sqkm,
+       r.country_name AS r_country_name, 
+       r.country_code AS r_country_code, 
+       r.region, 
+       r.income_group,
+       (f.forest_area_sqkm) / (l.total_area_sq_mi * 2.59) * 100 AS percent_forest_area
 
   FROM forest_area f 
   JOIN land_area l
