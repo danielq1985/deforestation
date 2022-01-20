@@ -14,12 +14,11 @@ SELECT f.country_code AS f_country_code,
        r.region, 
        r.income_group,
        (f.forest_area_sqkm) / (l.total_area_sq_mi * 2.59) * 100 AS percent_forest_area
-
-  FROM forest_area f 
-  JOIN land_area l
-  ON f.country_code = l.country_code AND f.year = l.year
-  JOIN regions r
-  ON l.country_code = r.country_code;
+FROM forest_area f 
+JOIN land_area l
+ON f.country_code = l.country_code AND f.year = l.year
+JOIN regions r
+ON l.country_code = r.country_code;
 
 --What was the total forest area (in sq km) of the world in 1990? 
 --Total forest area 1990
@@ -30,7 +29,7 @@ GROUP BY f_year;
 
 --What was the total forest area (in sq km) of the world in 2016?
 --Total forest area 2016
-SELECT f_year, SUM(forest_area_sqkm) AS total_forest_area
+SELECT f_year, SUM(forest_area_sqkm) AS total_forest_area 
 FROM forestation
 WHERE r_country_name = 'World' AND f_year = 2016
 GROUP BY f_year;
